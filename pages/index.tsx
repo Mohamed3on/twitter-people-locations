@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useDeferredValue, startTransition } from 'react';
+import React, { useState, useEffect, startTransition } from 'react';
 type Location = [string, number];
 type Locations = Location[];
 
@@ -18,13 +18,11 @@ export default function Home() {
       });
   }, []);
 
-  const deferredLocations = useDeferredValue(locations);
-
   if (pending) {
     return <div className='text-center mt-20'>Loading...</div>;
   }
 
-  if (deferredLocations) {
+  if (locations) {
     return (
       <div className='min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12'>
         <div className='relative py-3 sm:max-w-xl sm:mx-auto'>
@@ -34,7 +32,7 @@ export default function Home() {
               Popular Twitter Friends Locations
             </h1>
             <ul className='space-y-4'>
-              {deferredLocations.map((location, index) => (
+              {locations.map((location, index) => (
                 <li key={index} className='flex justify-between items-center'>
                   <span className='text-xl font-semibold'>{location[0]}</span>
                   <span className='bg-blue-500 text-white font-semibold py-1 px-3 rounded'>
