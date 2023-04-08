@@ -12,6 +12,5 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.end_headers()
         locations = get_popular_friends_locations()
-        print(locations)
         self.wfile.write(locations.encode())
         return
