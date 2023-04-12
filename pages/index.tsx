@@ -17,6 +17,7 @@ export default function Home({ locations, error }: HomeProps) {
   return (
     <>
       <Head>
+        <link rel='icon' href='/favicon.ico' />
         <title>Where Mohamed&apos;s Twitter network lives</title>
       </Head>
       <div className='min-h-screen bg-gradient-to-r from-cyan-400 to-light-blue-500 flex items-center justify-center'>
