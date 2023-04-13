@@ -27,8 +27,10 @@ export default function Home({ locations, error }: HomeProps) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req, res }: any) {
   try {
+    // cache for 2 days
+    res.setHeader('Cache-Control', 's-maxage=172800, stale-while-revalidate');
     const response = await fetch(`${process.env.NEXT_PUBLIC_FUNCTIONS_BASE_URL}/api/locations`);
     if (!response.ok) {
       throw new Error('Failed to fetch data');
