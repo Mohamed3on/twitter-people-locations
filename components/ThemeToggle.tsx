@@ -15,10 +15,10 @@ const ThemeToggle: React.FC = () => {
       className='p-2 bg-gray-200 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
       onClick={toggleTheme}
     >
-      {resolvedTheme === 'light' ? (
-        <MoonIcon className='h-6 w-6 text-gray-800 dark:text-gray-200' />
+      {resolvedTheme === 'dark' ? (
+        <SunIcon className='h-6 w-6 text-gray-800 dark:text-yellow-300' />
       ) : (
-        <SunIcon className='h-6 w-6 text-gray-800 dark:text-gray-200' />
+        <MoonIcon className='h-6 w-6 text-gray-800 dark:text-gray-200' />
       )}
     </button>
   );
