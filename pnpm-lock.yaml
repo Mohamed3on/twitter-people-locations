@@ -12,7 +12,6 @@ specifiers:
   postcss: 8.4.21
   react: 18.2.0
   react-dom: 18.2.0
-  react-spinners: ^0.13.8
   tailwindcss: 3.3.1
   typescript: 5.0.4
   vercel: ^28.18.4
@@ -29,7 +28,6 @@ dependencies:
   postcss: 8.4.21
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-spinners: 0.13.8_biqbaboplfbrettd7655fr4n2y
   tailwindcss: 3.3.1_postcss@8.4.21
   typescript: 5.0.4
   vercel: 28.18.5_@types+node@18.15.11
@@ -6833,16 +6831,6 @@ packages:
   /react-refresh/0.14.0:
     resolution: {integrity: sha1-TgKCU3il8icHlVTUKEiJNU5fVT4=}
     engines: {node: '>=0.10.0'}
-    dev: false
-
-  /react-spinners/0.13.8_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha1-UmJXG+D3RdhrvUmh5rSfn5yxmsw=}
-    peerDependencies:
-      react: ^16.0.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:

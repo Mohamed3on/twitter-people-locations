@@ -1,7 +1,6 @@
 import { LocationList } from '@/components/LocationList';
 import Head from 'next/head';
 import React from 'react';
-import { BeatLoader } from 'react-spinners';
 type Locations = [string, number][];
 
 interface HomeProps {
@@ -21,7 +20,11 @@ export default function Home({ locations, error }: HomeProps) {
         <title>Where Mohamed&apos;s Twitter network lives</title>
       </Head>
       <div className='min-h-screen bg-gradient-to-r from-cyan-400 to-light-blue-500 flex items-center justify-center'>
-        {locations ? <LocationList locations={locations} /> : <BeatLoader color='#2563EB' />}
+        {locations ? (
+          <LocationList locations={locations} />
+        ) : (
+          <div className='text-center mt-20'>Error: {error}</div>
+        )}
       </div>
     </>
   );
