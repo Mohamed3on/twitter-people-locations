@@ -9,6 +9,7 @@ specifiers:
   eslint: 8.38.0
   eslint-config-next: 13.3.0
   next: 13.3.0
+  next-themes: ^0.2.1
   postcss: 8.4.21
   react: 18.2.0
   react-dom: 18.2.0
@@ -25,6 +26,7 @@ dependencies:
   eslint: 8.38.0
   eslint-config-next: 13.3.0_voubu7prgxjfsfbgx5d4sqnwiy
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
+  next-themes: 0.2.1_yucv4tfv7v7nrkw2uguegj6e7e
   postcss: 8.4.21
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -6063,6 +6065,18 @@ packages:
   /netmask/2.0.2:
     resolution: {integrity: sha1-iwGgdkQGXVNjg4NYI7xSAE66xec=}
     engines: {node: '>= 0.4.0'}
+    dev: false
+
+  /next-themes/0.2.1_yucv4tfv7v7nrkw2uguegj6e7e:
+    resolution: {integrity: sha1-DJ8SjoR5edr2xn9ws45rZWeFbkU=}
+    peerDependencies:
+      next: '*'
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      next: 13.3.0_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /next/13.3.0_biqbaboplfbrettd7655fr4n2y:

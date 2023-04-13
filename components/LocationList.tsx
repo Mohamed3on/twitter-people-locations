@@ -22,17 +22,19 @@ const formatLocation = (location: string) => {
 
 export const LocationList: React.FC<LocationListProps> = ({ locations }) => {
   return (
-    <div className='min-h-screen  py-6 flex flex-col justify-center sm:py-12'>
+    <div className='min-h-screen py-6 flex flex-col justify-center sm:py-12'>
       <div className='relative py-3 sm:max-w-xl sm:mx-auto'>
-        <div className='absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl'></div>
-        <div className='relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20'>
-          <h1 className='text-4xl font-bold text-center mb-4'>
+        <div className='absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 dark:from-gray-700 dark:to-gray-800 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl'></div>
+        <div className='relative px-4 py-10 bg-white dark:bg-gray-800 shadow-lg sm:rounded-3xl sm:p-20'>
+          <h1 className='text-4xl font-bold text-center mb-4 dark:text-gray-200'>
             Where Mohamed&apos;s Twitter Friends live
           </h1>
           <ul className='space-y-4'>
             {locations.map((location, index) => (
               <li key={index} className='flex justify-between items-center'>
-                <span className='text-xl font-semibold'>{formatLocation(location[0])}</span>
+                <span className='text-xl font-semibold dark:text-gray-200'>
+                  {formatLocation(location[0])}
+                </span>
                 <span className='bg-blue-500 text-white font-semibold py-1 px-3 rounded'>
                   {location[1]}
                 </span>
