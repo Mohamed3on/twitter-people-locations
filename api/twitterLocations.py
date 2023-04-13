@@ -68,7 +68,7 @@ def get_popular_friends_locations():
     locations = addlocations(myfriends, locations, mutes)
 
     locations = {k: v for k, v in locations.items() if v >=
-                 locations['Berlin']}
+                 locations['Egypt']}
     mostcommon = sorted(locations.items(),
                         key=operator.itemgetter(1), reverse=True)
 
