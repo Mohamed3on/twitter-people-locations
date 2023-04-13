@@ -20,8 +20,8 @@ export default function Home({ locations, error }: HomeProps) {
         <link rel='icon' href='/favicon.ico' />
         <title>Where Mohamed&apos;s Twitter network lives</title>
       </Head>
-      <div className='min-h-screen bg-gradient-to-r from-cyan-400 to-light-blue-500 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center'>
-        <div className='absolute top-4 right-4'>
+      <div className='min-h-screen bg-gradient-to-r from-cyan-400 to-light-blue-500 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center p-8 sm:p-0'>
+        <div className='fixed top-4 right-4'>
           <ThemeToggle />
         </div>
         {locations ? (
