@@ -3,7 +3,6 @@ import operator
 import re
 import tweepy
 import os
-import webbrowser
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -20,20 +19,15 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 myfriends = api.get_friends(count=200)
 
 
-
-
 def addlocations(thelist, locations, mutes):
-
     for member in thelist:
-
         if member.id in mutes:
             continue
 
         location = member.location
-        if location != '':
-            fulllocation = "\'" + location + "\'"
-            all_locations = re.split(
-                r', | \/ | \ | \\ | & | \+ | and |\| | ·', location)
+        if location != "":
+            fulllocation = "'" + location + "'"
+            all_locations = re.split(r", | \/ | \ | \\ | & | \+ | and |\| | ·", location)
             if len(all_locations) > 1:
                 all_locations.append(fulllocation)
             for l in all_locations:
@@ -67,9 +61,7 @@ def get_popular_friends_locations():
     locations = addlocations(main_list, locations, mutes)
     locations = addlocations(myfriends, locations, mutes)
 
-    locations = {k: v for k, v in locations.items() if v >=
-                 locations['Egypt']}
-    mostcommon = sorted(locations.items(),
-                        key=operator.itemgetter(1), reverse=True)
+    locations = {k: v for k, v in locations.items() if v >= locations["Egypt"]}
+    mostcommon = sorted(locations.items(), key=operator.itemgetter(1), reverse=True)
 
     return json.dumps(mostcommon)
