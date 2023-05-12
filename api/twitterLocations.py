@@ -61,7 +61,7 @@ def get_popular_friends_locations():
     locations = addlocations(main_list, locations, mutes)
     locations = addlocations(myfriends, locations, mutes)
 
-    locations = {k: v for k, v in locations.items() if v >= locations["Egypt"]}
+    locations = {k: v for k, v in locations.items() if v >= 5}
     mostcommon = sorted(locations.items(), key=operator.itemgetter(1), reverse=True)
 
     return json.dumps(mostcommon)
