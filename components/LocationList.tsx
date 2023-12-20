@@ -1,5 +1,10 @@
 import React from 'react';
-type Location = [string, number];
+export type Location = {
+  location: string;
+  latestCount: number;
+  oldestCount: number;
+  countChange: number;
+};
 
 interface LocationListProps {
   locations: Location[];
@@ -20,6 +25,16 @@ const formatLocation = (location: string) => {
   return formattedLocation;
 };
 
+const determineEmoji = (countChange: number | null) => {
+  if (countChange === null || countChange === 0) return '';
+  return countChange > 0 ? '🔥' : '❄️';
+};
+
+const formatChange = (countChange: number | null) => {
+  if (countChange === null || countChange === 0) return '';
+  return countChange > 0 ? `+${countChange}` : `${countChange}`;
+};
+
 export const LocationList: React.FC<LocationListProps> = ({ locations }) => {
   return (
     <div className='min-h-screen py-6 flex flex-col justify-center sm:py-12'>
@@ -33,11 +48,23 @@ export const LocationList: React.FC<LocationListProps> = ({ locations }) => {
             {locations.map((location, index) => (
               <li key={index} className='flex justify-between items-center'>
                 <span className='text-xl font-semibold dark:text-gray-200'>
-                  {formatLocation(location[0])}
+                  {formatLocation(location.location)}
                 </span>
-                <span className='bg-blue-500 text-white font-semibold py-1 px-3 rounded'>
-                  {location[1]}
-                </span>
+                <div className='flex items-center space-x-2'>
+                  <span className=' text-gray-600 font-semibold py-1 px-3   text-center'>
+                    {location.latestCount}
+                  </span>
+                  <span
+                    className={`font-semibold w-8 text-center ${
+                      location.countChange > 0 ? 'text-green-500' : 'text-red-500'
+                    }`}
+                  >
+                    {location.countChange !== null && location.countChange !== 0
+                      ? formatChange(location.countChange)
+                      : ''}
+                  </span>
+                  <span className='w-5 text-center'>{determineEmoji(location.countChange)}</span>
+                </div>
               </li>
             ))}
           </ul>

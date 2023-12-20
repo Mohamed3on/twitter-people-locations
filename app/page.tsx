@@ -8,49 +8,29 @@ const supabase = createClient(
 );
 
 async function fetchLocationData() {
-  const tenDaysAgo = new Date();
-  tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
-
-  const fiveDaysAgo = new Date();
-  fiveDaysAgo.setDate(fiveDaysAgo.getDate() - 5);
-
   // Fetch the latest counts
   let { data: latestCounts, error: latestError } = await supabase
-    .from('locations')
-    .select('location, count')
-    .order('timestamp', { ascending: false });
+    .from('location_data_summary')
+    .select('*')
+    .order('latest_count', { ascending: false });
+
+  console.log(latestCounts);
 
   if (latestError) {
     console.error(latestError);
     return;
   }
 
-  // Fetch counts from approximately a week ago
-  let { data: weekAgoCounts, error: weekAgoError } = await supabase
-    .from('locations')
-    .select('location, count')
-    .gte('timestamp', tenDaysAgo.toISOString())
-    .lte('timestamp', fiveDaysAgo.toISOString())
-    .order('timestamp', { ascending: false });
-
-  if (weekAgoError) {
-    console.error(weekAgoError);
-    return;
-  }
-
   // Combine and process the data in TypeScript
   const processedData = latestCounts?.map((latest) => {
-    const weekAgoData = weekAgoCounts?.find((w) => w.location === latest.location);
     return {
       location: latest.location,
-      latestCount: latest.count,
-      weekAgoCount: weekAgoData ? weekAgoData.count : null,
-      difference: weekAgoData ? latest.count - weekAgoData.count : null,
+      latestCount: latest.latest_count,
+      oldestCount: latest.oldest_count,
+      countChange: latest.count_difference,
+      oldestTimestamp: latest.oldest_timestamp,
     };
   });
-
-  // Sort by latest count
-  processedData?.sort((a, b) => b.latestCount - a.latestCount);
 
   return processedData;
 }
@@ -60,9 +40,7 @@ export default async function Home() {
 
   return (
     <div className='min-h-screen bg-gradient-to-r from-cyan-400 to-light-blue-500 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center p-8 sm:p-0'>
-      <LocationList
-        locations={locationData!.map((location) => [location.location, location.latestCount])}
-      />
+      <LocationList locations={locationData!} />
     </div>
   );
 }
