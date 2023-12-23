@@ -2,7 +2,7 @@ import { LocationList } from '@/components/LocationList';
 import React from 'react';
 import { createClient } from '@supabase/supabase-js';
 
-export const revalidate = 60 * 60 * 24; // 24 hours
+export const revalidate = 60 * 60 * 3; // 3 hours
 
 const supabase = createClient(
   process.env.SUPABASE_PROJECT_URL || '',
