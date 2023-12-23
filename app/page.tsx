@@ -2,6 +2,8 @@ import { LocationList } from '@/components/LocationList';
 import React from 'react';
 import { createClient } from '@supabase/supabase-js';
 
+export const revalidate = 60 * 60 * 24; // 24 hours
+
 const supabase = createClient(
   process.env.SUPABASE_PROJECT_URL || '',
   process.env.SUPABASE_API_KEY || ''
@@ -14,7 +16,9 @@ async function fetchLocationData() {
     .select('*')
     .order('latest_count', { ascending: false });
 
-  console.log(latestCounts);
+  // // log first 10 counts
+
+  // console.log(latestCounts?.slice(0, 10));
 
   if (latestError) {
     console.error(latestError);
